@@ -159,6 +159,8 @@ int main(int argc, char** argv)
     TextProcessor textProcessor(moduleStore, moduleHelper);
     ModuleSearch moduleSearch(moduleStore, moduleHelper, textProcessor);
 
+    std::vector<std::string> keyList = moduleHelper.getKeyList("Nave");
+
     /*std::vector<sword::SWModule*> localModules = moduleStore.getAllLocalModules();
     for (int i = 0; i < localModules.size(); i++) {
         sword::SWModule* module = localModules[i];
@@ -197,7 +199,7 @@ int main(int argc, char** argv)
 
     //get_strongs_entry(textProcessor);
 
-    get_module_text(textProcessor);
+    //get_module_text(textProcessor);
 
     //get_book_intro(textProcessor);
 

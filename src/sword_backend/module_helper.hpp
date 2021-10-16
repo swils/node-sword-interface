@@ -46,6 +46,7 @@ public:
     bool moduleHasBook(sword::SWModule* module, std::string bookCode);
 
     std::vector<std::string> getBookList(std::string moduleName);
+    std::vector<std::string> getKeyList(std::string moduleName);
     int getBookChapterCount(std::string moduleName, std::string bookCode);
     int getChapterVerseCount(std::string moduleName, std::string bookCode, int chapter);
     std::map<std::string, int> getAbsoluteVerseNumberMap(sword::SWModule* module, std::vector<std::string> bookList={});

@@ -27,6 +27,7 @@
 #include <swmodule.h>
 #include <versekey.h>
 #include <localemgr.h>
+#include <swld.h>
 
 #include "module_helper.hpp"
 
@@ -101,6 +102,33 @@ vector<string> ModuleHelper::getBookList(string moduleName)
     }
 
     return bookList;
+}
+
+vector<string> ModuleHelper::getKeyList(string moduleName)
+{
+    string currentKey = "";
+    vector<string> keyList;
+    sword::SWLD* module = dynamic_cast<sword::SWLD*>(this->_moduleStore.getLocalModule(moduleName));
+    //module->setKeyText("Jacob");
+    //module->setPosition(TOP);
+
+    /*cout << module->getEntryCount() << std::endl;
+    cout << module->getRawEntryBuf() << std::endl;
+
+    return keyList;*/
+
+    if (module == 0) {
+        cerr << "getLocalModule returned zero pointer for " << moduleName << endl;
+    } else {
+        SWKey *k = module->getKey();
+
+        for ((*k) = TOP; !k->popError(); k->increment(1)) {
+            cout << k->getText() << std::endl;
+            //keyList.push_back(k->getShortText());
+        }
+    }
+
+    return keyList;
 }
 
 int ModuleHelper::getBookChapterCount(std::string moduleName, std::string bookCode)
